@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --primary-color: #00ffff;
+    --secondary-color: #00ff00;
+    --danger-color: #ff0000;
+    --bg-color: #000000;
+    --panel-bg: rgba(0, 255, 255, 0.05);
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--primary-color);
+}
+
+.nostromo-border {
+    border: 4px solid var(--primary-color);
+    padding: 20px;
+    margin: 20px;
+    position: relative;
+}
+
+.corner-decoration {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--primary-color);
+}
+
+.corner-tl { top: -4px; left: -4px; border-top: 4px solid; border-left: 4px solid; }
+.corner-tr { top: -4px; right: -4px; border-top: 4px solid; border-right: 4px solid; }
+.corner-bl { bottom: -4px; left: -4px; border-bottom: 4px solid; border-left: 4px solid; }
+.corner-br { bottom: -4px; right: -4px; border-bottom: 4px solid; border-right: 4px solid; }
+
+.panel {
+    border: 2px solid var(--primary-color);
+    padding: 15px;
+    margin: 10px 0;
+    background-color: var(--panel-bg);
+}
+
+.heading {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.status-text {
+    color: var(--secondary-color);
+}
+
+.skill-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--danger-color);
+    margin-right: 10px;
+}
+
+/* Animation classes */
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid var(--primary-color);
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end),
+               blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-color); }
+}
+
+/* Welcome sequence styles */
+.welcome-container {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.welcome-text {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    letter-spacing: 3px;
+}
+
+.typewriter {
+    animation: typing 2s steps(40, end),
+               blink-caret 0.75s step-end infinite;
+}
+
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1 }
+    to { opacity: 0 }
+}
+
+@keyframes blink-caret {
+    from, to { border-right-color: transparent }
+    50% { border-right-color: var(--primary-color) }
+}
+
+/* Clock styles */
+.clock-wrapper {
+    font-family: 'Share Tech Mono', monospace;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.clock-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 8px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid var(--primary-color);
+}
+
+.clock-digit {
+    min-width: 1.2em;
+    text-align: center;
+    position: relative;
+    color: var(--primary-color);
+}
+
+.clock-separator {
+    color: var(--primary-color);
+    opacity: 0.7;
+}
+
+.clock-suffix {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.clock-update {
+    animation: digitUpdate 0.3s ease-in-out;
+}
+
+.blink-slow {
+    animation: blinkSlow 2s infinite;
+}
+
+@keyframes digitUpdate {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    20% {
+        opacity: 0.8;
+        transform: translateY(-2px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blinkSlow {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.3; }
+}
+
+/* Scan line effect */
+.clock-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+    opacity: 0.3;
+    animation: scanLine 2s linear infinite;
+}
+
+@keyframes scanLine {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
