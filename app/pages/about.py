@@ -5,20 +5,6 @@ import dash_bootstrap_components as dbc
 from app.components.header import create_header
 from app.components.footer import create_footer
 from app.components.decorations import create_corner_decorations
-from app.components.welcome_sequence import create_welcome_sequence, register_welcome_callbacks
-from app.components.clock import create_clock
-
-def create_header():
-    return dbc.Row([
-        dbc.Col([
-            create_welcome_sequence(),
-            html.Div([
-                html.Span('SYSTEM STATUS: ', className='text-muted'),
-                html.Span('ONLINE', className='status-text blink')
-            ]),
-            create_clock(),
-        ])
-    ], className='mb-4')
 
 
 def create_profile_panel():
@@ -27,21 +13,25 @@ def create_profile_panel():
             html.H2('CREW PROFILE', className='heading'),
             html.Div([
                 html.Span('NAME: ', className='text-muted'),
-                html.Span('[Your Name]', className='status-text')
+                html.Span('ALEXANDER MATTHEW, CFA', className='status-text ')
             ], className='mb-2'),
             html.Div([
                 html.Span('ROLE: ', className='text-muted'),
-                html.Span('[Your Role]', className='status-text')
+                html.Span('MANAGER, INVESTMENT STRATEGIES', className='status-text')
             ], className='mb-2'),
             html.Div([
+                html.Span('EDUCATION: ', className='text-muted'),
+                html.Span('UNIV. NORTH CAROLINA at Chapel Hill B.S. Mathematical Decision Sciences (Statistics)', className='status-text')
+            ]),
+            html.Div([
                 html.Span('STATUS: ', className='text-muted'),
-                html.Span('ACTIVE', className='status-text')
+                html.Span('ACTIVE', className='status-text blink')
             ]),
         ], className='panel')
     ], width=6)
 
 def create_skills_panel():
-    skills = ['Python', 'Dash', 'Data Analysis', 'Machine Learning']
+    skills = ['Python', 'MATLAB', 'Derivatives', 'Portfolio Management']
     return dbc.Col([
         html.Div([
             html.H2('TECHNICAL PROFICIENCIES', className='heading'),
