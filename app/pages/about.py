@@ -2,9 +2,6 @@ from datetime import datetime
 
 from dash import html
 import dash_bootstrap_components as dbc
-from app.components.header import create_header
-from app.components.footer import create_footer
-from app.components.decorations import create_corner_decorations
 
 
 def create_profile_panel():
@@ -30,6 +27,7 @@ def create_profile_panel():
         ], className='panel')
     ], width=6)
 
+
 def create_skills_panel():
     skills = ['Python', 'MATLAB', 'Derivatives', 'Portfolio Management']
     return dbc.Col([
@@ -44,6 +42,7 @@ def create_skills_panel():
         ], className='panel')
     ], width=6)
 
+
 def create_mission_panel():
     return dbc.Row([
         dbc.Col([
@@ -57,16 +56,13 @@ def create_mission_panel():
         ])
     ], className='mt-4')
 
+
 def create_about_layout():
     return html.Div([
         html.Div([
-            create_header(),
             dbc.Row([
                 create_profile_panel(),
                 create_skills_panel()
-            ]),
-            create_mission_panel(),
-            create_footer(),
-            create_corner_decorations()
+            ])
         ], className='nostromo-border')
     ])

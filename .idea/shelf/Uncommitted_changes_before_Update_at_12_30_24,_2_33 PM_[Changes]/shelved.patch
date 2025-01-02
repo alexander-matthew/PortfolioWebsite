@@ -1,0 +1,96 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"Black\">\n    <option name=\"sdkName\" value=\"Python 3.10 (PortfolioWebsite)\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision e8f6e9bc83a136817eff073537cecf2ced0f1f58)
++++ b/.idea/misc.xml	(date 1735345444116)
+@@ -3,4 +3,5 @@
+   <component name="Black">
+     <option name="sdkName" value="Python 3.10 (PortfolioWebsite)" />
+   </component>
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (PortfolioWebsite)" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"a24c6a49-01d4-4bfa-b02d-62ed4514cd1d\" name=\"Changes\" comment=\"init\">\n      <change afterPath=\"$PROJECT_DIR$/app/__init__.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/assets/style.css\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/components/__init__.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/components/clock.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/components/decorations.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/components/footer.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/components/header.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/components/welcome_sequence.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/pages/__init__.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/pages/about.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/app.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/app.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/main.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/main.py\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;alexander-matthew&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/alexander-matthew/PortfolioWebsite.git&quot;,\n    &quot;accountId&quot;: &quot;34777638-eb2c-49a1-a435-e6d9943bb95c&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 0\n}</component>\n  <component name=\"ProjectId\" id=\"2qmSk1BVn1EYf09VS508tAU07Go\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"Python.main.executor\": \"Run\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"git-widget-placeholder\": \"main\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\Alex\\PycharmProjects\\PortfolioWebsite\\app\" />\n      <recent name=\"C:\\Users\\Alex\\PycharmProjects\\PortfolioWebsite\" />\n    </key>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"a24c6a49-01d4-4bfa-b02d-62ed4514cd1d\" name=\"Changes\" comment=\"\" />\n      <created>1735266398021</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1735266398021</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"init\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1735266505425</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1735266505425</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"init\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"init\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e8f6e9bc83a136817eff073537cecf2ced0f1f58)
++++ b/.idea/workspace.xml	(date 1735404096638)
+@@ -5,19 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="a24c6a49-01d4-4bfa-b02d-62ed4514cd1d" name="Changes" comment="init">
+-      <change afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/assets/style.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/components/__init__.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/components/clock.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/components/decorations.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/components/footer.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/components/header.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/components/welcome_sequence.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/pages/__init__.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/pages/about.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/PortfolioWebsite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PortfolioWebsite.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -51,6 +41,9 @@
+     &quot;accountId&quot;: &quot;34777638-eb2c-49a1-a435-e6d9943bb95c&quot;
+   }
+ }</component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 0
+ }</component>
+@@ -63,6 +56,7 @@
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+     "Python.main.executor": "Run",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "git-widget-placeholder": "main"
+   }
+@@ -76,7 +70,7 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220" />
++        <option value="bundled-python-sdk-09665e90c3a7-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15026.15" />
+       </set>
+     </attachedChunks>
+   </component>
+Index: .idea/PortfolioWebsite.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"PYTHON_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\">\n    <content url=\"file://$MODULE_DIR$\">\n      <excludeFolder url=\"file://$MODULE_DIR$/.venv\" />\n    </content>\n    <orderEntry type=\"jdk\" jdkName=\"Python 3.10 (PortfolioWebsite)\" jdkType=\"Python SDK\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/PortfolioWebsite.iml b/.idea/PortfolioWebsite.iml
+--- a/.idea/PortfolioWebsite.iml	(revision e8f6e9bc83a136817eff073537cecf2ced0f1f58)
++++ b/.idea/PortfolioWebsite.iml	(date 1735345444114)
+@@ -4,7 +4,7 @@
+     <content url="file://$MODULE_DIR$">
+       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+     </content>
+-    <orderEntry type="jdk" jdkName="Python 3.10 (PortfolioWebsite)" jdkType="Python SDK" />
++    <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+ </module>
+\ No newline at end of file

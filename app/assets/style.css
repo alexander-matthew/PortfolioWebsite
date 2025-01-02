@@ -211,3 +211,39 @@ body {
         transform: translateY(100%);
     }
 }
+
+/* Navbar custom styles */
+.navbar-custom {
+    margin-bottom: 20px;
+}
+
+.navbar-custom .navbar-brand {
+    color: var(--primary-color) !important;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.navbar-custom .nav-link {
+    color: var(--primary-color) !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-custom .nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+.dropdown-menu {
+    background-color: var(--bg-color) !important;
+    border: 1px solid var(--primary-color) !important;
+    border-radius: 0 !important;
+}
+
+.dropdown-item {
+    color: var(--primary-color) !important;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.dropdown-item:hover {
+    background-color: var(--panel-bg) !important;
+    color: var(--secondary-color) !important;
+}

@@ -2,8 +2,7 @@
 # app/components/header.py
 from dash import html
 import dash_bootstrap_components as dbc
-from datetime import datetime
-from app.components.clock import create_clock
+
 
 def create_header():
     return dbc.Row([
@@ -13,6 +12,5 @@ def create_header():
                 html.Span('SYSTEM STATUS: ', className='text-muted'),
                 html.Span('ONLINE', className='status-text blink')
             ]),
-            create_clock(),
         ])
     ], className='mb-4')
