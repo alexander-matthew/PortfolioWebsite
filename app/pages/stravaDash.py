@@ -3,6 +3,8 @@ from datetime import datetime
 import dash_bootstrap_components as dbc  # We'll use this for the grid system
 from flask import redirect, request
 from app.tools.stravaAPI import Strava
+import pandas as pd
+import plotly.express as px
 
 
 def create_layout():
@@ -15,6 +17,7 @@ def create_layout():
                 className="btn btn-primary mb-4"
             ),
             html.Div(id='profile-container'),
+            html.Div(id='distance-plot'),
             html.Div(id='auth-status'),
             dcc.Location(id='url', refresh=False),
             dcc.Store(id='auth-store'),
@@ -133,6 +136,7 @@ def init_app():
 
     @app.callback(
         Output('profile-container', 'children'),
+        Output('distance-plot', 'children'),
         Output('auth-store', 'data'),
         Input('url', 'search')
     )
@@ -150,11 +154,43 @@ def init_app():
                         tokens['access_token'],
                         athlete['id']
                     )
-                    return create_profile_card(athlete, stats), tokens
+
+                    # Fetch activities and create plot
+                    activities = strava.get_all_activities(tokens['access_token'])
+                    distance_plot = create_distance_plot(activities, 'Run')
+
+                    return create_profile_card(athlete, stats), distance_plot, tokens
 
         return None, None
 
     return app
+
+
+def create_distance_plot(activities, activity_type=None):
+    # create timeseries
+    df = pd.DataFrame(activities)
+    df = df.loc[df['type'] == activity_type] if activity_type else df
+
+    df['date'] = pd.to_datetime(df['start_date']).dt.date
+    df['distance'] = df['distance'] / 1000
+
+    ts = df.groupby('date')['distance'].sum()
+    cumulative = ts.cumsum()
+
+    fig = px.line(
+        x=cumulative.index,
+        y=cumulative.values,
+        title=f'Distance Over Time - {activity_type}',
+        labels={'x': 'Date', 'y': 'Kilometers'}
+    )
+
+    fig.update_traces(line_color='#fc4c02')  # Strava orange
+    fig.update_layout(
+        template='plotly_white',
+        hovermode='x unified'
+    )
+
+    return dcc.Graph(figure=fig)
 
 
 if __name__ == '__main__':

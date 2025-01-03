@@ -60,18 +60,27 @@ class Strava:
         )
         return response.json() if response.ok else None
 
-    def get_recent_activities(self, per_page=10):
-        if not self.access_token:
-            return None
-
-        headers = {'Authorization': f'Bearer {self.access_token}'}
-        params = {
-            'per_page': per_page,
-            'page': 1
-        }
+    def get_activities(self, access_token, **params):
+        """
+        Params:
+        - before (int, optional): Epoch timestamp
+        - after (int, optional): Epoch timestamp
+        - page (int, optional): Page number (default: 1)
+        - per_page (int, optional): # of items per page (default: 30) -- max 200
+        """
         response = requests.get(
-            f"{self.base_url}/athlete/activities",
-            headers=headers,
+            f'{self.base_url}/athlete/activities',
+            headers={'Authorization': f'Bearer {access_token}'},
             params=params
         )
         return response.json() if response.ok else None
+
+    def get_all_activities(self, access_token, before=None, after=None):
+        # handle pagination to get all
+        results, page = [], 1
+        while res := self.get_activities(access_token, before=before, after=after, page=page, per_page=100):
+            if not res: break
+            results.extend(res)
+            if len(res) < 100: break
+            page += 1
+        return results
