@@ -24,7 +24,7 @@ def create_navbar():
             dbc.NavItem(
                 dbc.DropdownMenu(
                     children=[
-                        dbc.DropdownMenuItem("Project 1", href="/projects/1"),
+                        dbc.DropdownMenuItem("StravaViz", href="/projects/1"),
                         dbc.DropdownMenuItem("Project 2", href="/projects/2"),
                         dbc.DropdownMenuItem("Project 3", href="/projects/3"),
                     ],
