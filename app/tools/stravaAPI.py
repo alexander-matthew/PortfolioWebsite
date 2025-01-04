@@ -2,7 +2,8 @@ import os
 from dotenv import load_dotenv
 import requests
 from urllib.parse import urlencode
-
+from dataclasses import dataclass
+from typing import Dict, List, Optional
 
 # see strava documentation: https://developers.strava.com/docs/reference/#api-Streams
 class Strava:
@@ -84,3 +85,28 @@ class Strava:
             if len(res) < 100: break
             page += 1
         return results
+
+    def get_activity_streams(self, access_token: str, activity_id: int, stream_types: List[str]) -> Optional[Dict]:
+        headers = {'Authorization': f'Bearer {access_token}'}
+        response = requests.get(
+            f'https://www.strava.com/api/v3/activities/{activity_id}/streams',
+            headers=headers,
+            params={'keys': ','.join(stream_types), 'key_by_type': True}
+        )
+        return response.json() if response.status_code == 200 else None
+
+    def get_latest_activity_map(self, access_token: str) -> Optional[Dict]:
+        activities = self.get_activities(access_token, per_page=1)
+        if not activities:
+            return None
+
+        activity = activities[0]
+        streams = self.get_activity_streams(access_token, activity['id'],['latlng', 'altitude', 'time'])
+
+        if not streams:
+            return None
+
+        return {
+            'activity': activity,
+            'streams': streams
+        }

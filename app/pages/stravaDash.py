@@ -5,6 +5,8 @@ from flask import redirect, request
 from app.tools.stravaAPI import Strava
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
+from typing import List, Dict
 
 
 def create_layout():
@@ -17,8 +19,10 @@ def create_layout():
                 className="btn btn-primary mb-4"
             ),
             html.Div(id='profile-container'),
-            html.Div(id='distance-plot'),
-            html.Div(id='auth-status'),
+            dbc.Row([
+                dbc.Col(html.Div(id='distance-plot'), width=12, lg=6),
+                dbc.Col(html.Div(id='activity-map'), width=12, lg=6)
+            ]),
             dcc.Location(id='url', refresh=False),
             dcc.Store(id='auth-store'),
         ])
@@ -119,52 +123,6 @@ def create_stat_card(label, value, icon):
     ], className='bg-light h-100')
 
 
-def init_app():
-    app = Dash(__name__,
-               external_stylesheets=[
-                   dbc.themes.BOOTSTRAP,
-                   'https://use.fontawesome.com/releases/v5.15.4/css/all.css'
-               ])
-    strava = Strava()
-
-    app.layout = create_layout()
-
-    @app.server.route('/strava-auth')
-    def strava_auth():
-        auth_url = strava.get_authorization_url()
-        return app.server.redirect(auth_url)
-
-    @app.callback(
-        Output('profile-container', 'children'),
-        Output('distance-plot', 'children'),
-        Output('auth-store', 'data'),
-        Input('url', 'search')
-    )
-    def handle_oauth_callback(search):
-        if search and 'code=' in search:
-            code = search.split('code=')[1].split('&')[0]
-            tokens = strava.exchange_token(code)
-
-            if tokens:
-                athlete = strava.get_athlete(tokens['access_token'])
-
-                if athlete:
-                    # Fetch athlete stats
-                    stats = strava.get_athlete_stats(
-                        tokens['access_token'],
-                        athlete['id']
-                    )
-
-                    # Fetch activities and create plot
-                    activities = strava.get_all_activities(tokens['access_token'])
-                    distance_plot = create_distance_plot(activities, 'Run')
-
-                    return create_profile_card(athlete, stats), distance_plot, tokens
-
-        return None, None
-
-    return app
-
 
 def create_distance_plot(activities, activity_type=None):
     # create timeseries
@@ -191,6 +149,99 @@ def create_distance_plot(activities, activity_type=None):
     )
 
     return dcc.Graph(figure=fig)
+
+
+def create_activity_map(activity_data: Dict):
+    if not activity_data:
+        return html.Div("No recent activity data available")
+
+    activity = activity_data['activity']
+    streams = activity_data['streams']
+
+    if 'latlng' not in streams:
+        return html.Div("No GPS data available for this activity")
+
+    latlng = streams['latlng']['data']
+    lat, lon = zip(*latlng)
+
+    center_lat = sum(lat) / len(lat)
+    center_lon = sum(lon) / len(lon)
+
+    df = pd.DataFrame({
+        'lat': lat,
+        'lon': lon
+    })
+
+    fig = px.line_mapbox(
+        df,
+        lat='lat',
+        lon='lon',
+        center={'lat': center_lat, 'lon': center_lon},
+        zoom=11,
+        height=400
+    )
+
+    fig.update_traces(line=dict(color="#fc4c02", width=4))
+    fig.update_layout(
+        mapbox_style="open-street-map",
+        margin=dict(r=0, t=0, l=0, b=0),
+        showlegend=False
+    )
+
+    return html.Div([
+        html.H4(f"Latest Activity: {activity['name']}", className='mb-3'),
+        dcc.Graph(figure=fig)
+    ])
+
+
+def init_app():
+    app = Dash(__name__,
+               external_stylesheets=[
+                   dbc.themes.BOOTSTRAP,
+                   'https://use.fontawesome.com/releases/v5.15.4/css/all.css'
+               ])
+    strava = Strava()
+
+    app.layout = create_layout()
+
+    @app.server.route('/strava-auth')
+    def strava_auth():
+        auth_url = strava.get_authorization_url()
+        return app.server.redirect(auth_url)
+
+    @app.callback(
+        Output('profile-container', 'children'),
+        Output('distance-plot', 'children'),
+        Output('activity-map', 'children'),
+        Output('auth-store', 'data'),
+        Input('url', 'search')
+    )
+    def handle_oauth_callback(search):
+        if search and 'code=' in search:
+            code = search.split('code=')[1].split('&')[0]
+            tokens = strava.exchange_token(code)
+
+            if tokens:
+                athlete = strava.get_athlete(tokens['access_token'])
+
+                if athlete:
+                    # Fetch athlete stats
+                    stats = strava.get_athlete_stats(
+                        tokens['access_token'],
+                        athlete['id']
+                    )
+
+                    # Fetch activities and create plot
+                    activities = strava.get_all_activities(tokens['access_token'])
+                    distance_plot = create_distance_plot(activities, 'Run')
+                    map_data = strava.get_latest_activity_map(tokens['access_token'])
+
+                    return create_profile_card(athlete, stats), distance_plot, create_activity_map(map_data), tokens
+
+        return None, None, None, None
+
+    return app
+
 
 
 if __name__ == '__main__':
