@@ -29,15 +29,27 @@ def create_track_grid(tracks):
 def create_login_button():
     return html.Div([
         html.Div([
-            html.H2('Connect with Spotify', className='card-title'),
+            html.H2('Connect with Spotify',
+                    className='section-title mb-4'),
+            html.P(
+                "Connect your Spotify account to view your music preferences and listening habits.",
+                className="text-secondary mb-4"
+            ),
             html.A(
                 html.Button([
-                    DashIconify(icon="mdi:spotify", className="mr-2"),
-                    "Connect Spotify"
-                ], className='connect-button'),
-                href='/spotify-auth'
+                    DashIconify(
+                        icon="mdi:spotify",
+                        width=24,
+                        className="mr-2 inline-block"
+                    ),
+                    "Connect with Spotify"
+                ],
+                className='modern-button'),
+                href='/spotify-auth',
+                className='no-underline'
             )
-        ], className='modern-card')
+        ],
+        className='modern-card text-center py-8')
     ])
 
 
@@ -48,7 +60,7 @@ def register_spotify_callbacks(app):
         auth_url = spotify_api.get_auth_url()
         return app.server.redirect(auth_url)
 
-    # Handle OAuth callback
+    # Handle OAuth callback - parse authentication code
     @callback(
         [Output('spotify-auth-store', 'data'),
          Output('spotify-url', 'search')],
@@ -95,38 +107,43 @@ def register_spotify_callbacks(app):
         return None
 
 
+
 def create_spotify_page():
     return html.Div([
-        # Main container
         html.Div([
             # Header
             html.Div([
                 html.Div([
-                    DashIconify(icon="mdi:spotify", className="section-icon"),
-                    html.H2('My Music Taste', className='section-title')
-                ], className='section-header'),
+                    DashIconify(
+                        icon="mdi:spotify",
+                        width=32,
+                        className="section-icon"
+                    ),
+                    html.H2('Your Music Taste: Top 10 Tracks Over Different Periods', className='section-title')
+                ], className='header-left'),
 
                 # Time Range Selector
-                dcc.Dropdown(
-                    id='spotify-time-range',  # Updated ID
-                    options=[
-                        {'label': 'Last 4 Weeks', 'value': 'short_term'},
-                        {'label': 'Last 6 Months', 'value': 'medium_term'},
-                        {'label': 'Last 1 Year', 'value': 'long_term'}
-                    ],
-                    value='medium_term',
-                    className='time-range-selector'
-                )
-            ], className='modern-card'),
+                html.Div([
+                    dcc.Dropdown(
+                        id='spotify-time-range',
+                        options=[
+                            {'label': 'Last 4 Weeks', 'value': 'short_term'},
+                            {'label': 'Last 6 Months', 'value': 'medium_term'},
+                            {'label': 'Last 1 Year', 'value': 'long_term'}
+                        ],
+                        value='medium_term',
+                        className='time-range-selector'
+                    )
+                ], className='dropdown-container')
+            ], className='modern-card mb-6'),
 
-            # Login container
-            html.Div(id='spotify-auth-container', className='modern-card'),  # Updated ID
+            html.Div(id='spotify-auth-container', className='mb-6'),
 
             # Tracks container
-            html.Div(id='spotify-tracks-container'),  # Updated ID
+            html.Div(id='spotify-tracks-container', className='modern-card tracks-container'),
 
             # Hidden elements for auth
-            dcc.Store(id='spotify-auth-store'),  # Updated ID
-            dcc.Location(id='spotify-url', refresh=False)  # Updated ID
+            dcc.Store(id='spotify-auth-store'),
+            dcc.Location(id='spotify-url', refresh=False)
         ], className='content-container')
     ], className='modern-page')

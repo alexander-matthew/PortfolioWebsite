@@ -54,7 +54,7 @@ def init_app():
 
         if base_path == '/' or base_path == '/about':
             return create_about_me_page()
-        elif base_path.startswith('/projects/spotify'):  # Will match both /spotify and /spotify?code=...
+        elif base_path.startswith('/projects/spotify'):
             return create_spotify_page()
         elif base_path == '/projects/strava':
             return html.Div("Strava")
