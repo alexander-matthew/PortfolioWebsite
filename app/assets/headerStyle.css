@@ -1,4 +1,4 @@
-/* Modern Theme Variables */
+/* Theme Variables */
 :root {
     --bg-dark: #0f172a;
     --card-bg: #1e293b;
@@ -22,6 +22,58 @@
 .content-container {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/* Modern Navbar Styles */
+.navbar-modern {
+    backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+}
+
+.current-status {
+    margin-left: 2rem;
+    font-size: 0.9rem;
+}
+
+.status-icon {
+    color: var(--accent-green);
+    margin-right: 0.5rem;
+}
+
+.status-text {
+    color: var(--text-secondary);
+}
+
+.now-playing {
+    padding-left: 2rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.nav-item .nav-link:hover,
+.dropdown-item:hover {
+    color: var(--accent-blue) !important;
+    background: transparent;
+}
+
+.dropdown-menu {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+}
+
+.dropdown-item {
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Cards */
@@ -139,6 +191,35 @@
     background-color: var(--accent-blue);
 }
 
+/* Footer Styles */
+.footer {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    margin-top: auto;
+}
+
+.footer-credits {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+}
+
+.social-link:hover {
+    color: var(--accent-blue);
+}
+
 /* Animation */
 @keyframes pulse {
     0%, 100% { opacity: 1; }
@@ -159,5 +240,13 @@
 
     .main-grid {
         grid-template-columns: 1fr;
+    }
+
+    .now-playing {
+        display: none !important;
+    }
+
+    .navbar-modern {
+        padding: 0.5rem 1rem;
     }
 }

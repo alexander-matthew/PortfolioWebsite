@@ -1,24 +1,27 @@
 from dash import Dash, html,dcc
-import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
-
-# Import all components and pages
-from .pages.about import create_about_layout
+from .pages.about import create_about_me_page
 from .components.navbar import create_navbar
 from .components.footer import create_footer
-
+import dash_bootstrap_components as dbc
+from .pages.SpotifyDemo import create_spotify_page
 
 def create_app():
     app = Dash(
         __name__,
         external_stylesheets=[dbc.themes.CYBORG],
-        suppress_callback_exceptions=True
+        suppress_callback_exceptions=True,
+        assets_folder='assets',  # Tell Dash where to find your assets
+        assets_url_path='/assets'  # URL path where assets will be served from
     )
     return app
 
 
 def init_app():
     app = create_app()
+
+    from .pages.SpotifyDemo import register_spotify_callbacks
+    register_spotify_callbacks(app)
 
     #outer corners
     app.layout = html.Div([
@@ -28,9 +31,6 @@ def init_app():
         html.Div([
             create_navbar(),
 
-            html.Div(id='welcome-sequence', className='welcome-container'),
-
-            # Main content
             html.Div(
                 id='page-content',
                 className='flex-grow',
@@ -50,14 +50,20 @@ def init_app():
         Input('url', 'pathname')
     )
     def display_page(pathname):
-        if pathname == '/' or pathname == '/about':
-            return create_about_layout()
-        elif pathname == '/games/poker':
+        base_path = pathname.rstrip('/').split('?')[0]
+
+        if base_path == '/' or base_path == '/about':
+            return create_about_me_page()
+        elif base_path.startswith('/projects/spotify'):  # Will match both /spotify and /spotify?code=...
+            return create_spotify_page()
+        elif base_path == '/projects/strava':
+            return html.Div("Strava")
+        elif base_path == '/games/poker':
             return html.Div("Poker Page")
-        elif pathname == '/games/chess':
+        elif base_path == '/games/chess':
             return html.Div("Chess")
-        elif pathname.startswith('/projects/'):
+        elif base_path.startswith('/projects/'):
             return html.Div("Projects Page - Coming Soon")
-        return create_about_layout()
+        return create_about_me_page()
 
     return app

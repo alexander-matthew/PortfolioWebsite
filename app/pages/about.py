@@ -1,68 +1,68 @@
-from datetime import datetime
-
-from dash import html
-import dash_bootstrap_components as dbc
+from dash import html, dcc
 
 
-def create_profile_panel():
-    return dbc.Col([
+def create_about_me_page():
+    return html.Div([
+        # Main container
         html.Div([
-            html.H2('CREW PROFILE', className='heading'),
-            html.Div([
-                html.Span('NAME: ', className='text-muted'),
-                html.Span('ALEXANDER MATTHEW, CFA', className='status-text ')
-            ], className='mb-2'),
-            html.Div([
-                html.Span('ROLE: ', className='text-muted'),
-                html.Span('MANAGER, INVESTMENT STRATEGIES', className='status-text')
-            ], className='mb-2'),
-            html.Div([
-                html.Span('EDUCATION: ', className='text-muted'),
-                html.Span('UNIV. NORTH CAROLINA at Chapel Hill B.S. Mathematical Decision Sciences (Statistics)', className='status-text')
-            ]),
-            html.Div([
-                html.Span('STATUS: ', className='text-muted'),
-                html.Span('ACTIVE', className='status-text blink')
-            ]),
-        ], className='panel')
-    ], width=6)
-
-
-def create_skills_panel():
-    skills = ['Python', 'MATLAB', 'Derivatives', 'Portfolio Management']
-    return dbc.Col([
-        html.Div([
-            html.H2('TECHNICAL PROFICIENCIES', className='heading'),
+            # Profile Header Card
             html.Div([
                 html.Div([
-                    html.Span(className='skill-dot'),
-                    html.Span(skill)
-                ], className='mb-2') for skill in skills
-            ])
-        ], className='panel')
-    ], width=6)
+                    # Left side - Name and Status
+                    html.Div([
+                        html.H1('Alexander Matthew, CFA',
+                                className='profile-name'),
+                        html.P('Manager, Investment Strategies',
+                               className='profile-title'),
+                        html.Div([
+                            html.Div(className='status-dot'),
+                            html.Span('Active', className='status-text')
+                        ], className='status-container')
+                    ], className='profile-info'),
 
+                    # Right side - Avatar
+                    html.Div('AM', className='profile-avatar')
+                ], className='profile-header-content')
+            ], className='modern-card profile-card'),
 
-def create_mission_panel():
-    return dbc.Row([
-        dbc.Col([
+            # Main Grid
             html.Div([
-                html.H2('MISSION STATEMENT', className='heading'),
-                html.P('''
-                    [Your professional summary and mission statement here. 
-                    Describe your journey, passions, and what drives you in your field.]
-                ''', style={'color': 'var(--primary-color)'})
-            ], className='panel')
-        ])
-    ], className='mt-4')
+                # Education Section
+                html.Div([
+                    html.Div([
+                        html.I(className='fas fa-graduation-cap section-icon'),
+                        html.H2('Education', className='section-title')
+                    ], className='section-header'),
+                    html.Div([
+                        html.H3('University of North Carolina at Chapel Hill',
+                                className='education-school'),
+                        html.P('B.S. Mathematical Decision Sciences (Statistics)',
+                               className='education-degree')
+                    ], className='education-content')
+                ], className='modern-card'),
+
+                # Skills Section
+                html.Div([
+                    html.Div([
+                        html.I(className='fas fa-code section-icon'),
+                        html.H2('Technical Proficiencies', className='section-title')
+                    ], className='section-header'),
+                    html.Div([
+                        html.Span(skill, className='skill-tag')
+                        for skill in ['Python', 'MATLAB', 'Derivatives', 'Portfolio Management']
+                    ], className='skills-container')
+                ], className='modern-card'),
 
 
-def create_about_layout():
-    return html.Div([
-        html.Div([
-            dbc.Row([
-                create_profile_panel(),
-                create_skills_panel()
-            ])
-        ], className='nostromo-border')
-    ])
+                html.Div([
+                    html.Div([
+                        html.I(className='fas fa-target section-icon'),
+                        html.H2('Mission Statement', className='section-title')
+                    ], className='section-header'),
+                    html.P('''[Your professional summary and mission statement here. 
+                          Describe your journey, passions, and what drives you in your field.]''',
+                           className='mission-text')
+                ], className='modern-card full-width')
+            ], className='main-grid')
+        ], className='content-container')
+    ], className='modern-page')

@@ -23,7 +23,6 @@ class SpotifyAPI:
             'redirect_uri': self.redirect_uri,
             'scope': scope
         }
-
         return f"https://accounts.spotify.com/authorize?{urlencode(auth_params)}"
 
     def get_token(self, code):

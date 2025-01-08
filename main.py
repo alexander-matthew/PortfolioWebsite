@@ -1,3 +1,5 @@
+from http.cookiejar import debug
+
 from app.app import init_app
 
 app = init_app()

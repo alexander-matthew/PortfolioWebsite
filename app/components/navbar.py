@@ -1,54 +1,82 @@
 from dash import html
 import dash_bootstrap_components as dbc
-
+from dash_iconify import DashIconify
 
 def create_navbar():
-    return dbc.NavbarSimple(
-        children=[
-            # Games Dropdown
-            dbc.NavItem(
-                dbc.DropdownMenu(
-                    children=[
-                        dbc.DropdownMenuItem("Poker", href="/games/poker"),
-                        dbc.DropdownMenuItem("Chess", href="/games/chess"),
-                    ],
-                    nav=True,
-                    label="Games",
-                    toggle_style={
-                        "color": "var(--primary-color)",
-                    }
-                )
-            ),
+    return html.Div([
+        # Main navbar container
+        dbc.Navbar([
+            # Left side - Brand and Status
+            html.Div([
+                dbc.NavbarBrand("AM", href="/", className="mr-4"),
+                html.Div([
+                    DashIconify(icon="octicon:dot-fill-24", className="status-icon"),
+                    html.Span("Building something cool", className="status-text")
+                ], className="d-none d-md-flex align-items-center current-status")
+            ], className="d-flex align-items-center"),
 
-            # Projects Dropdown
-            dbc.NavItem(
-                dbc.DropdownMenu(
-                    children=[
-                        dbc.DropdownMenuItem("StravaViz", href="/projects/1"),
-                        dbc.DropdownMenuItem("Project 2", href="/projects/2"),
-                        dbc.DropdownMenuItem("Project 3", href="/projects/3"),
-                    ],
-                    nav=True,
-                    label="Projects",
-                    toggle_style={
-                        "color": "var(--primary-color)",
-                    }
-                )
-            ),
+            # Right side - Navigation
+            dbc.Nav([
+                # Games Dropdown
+                dbc.NavItem(
+                    dbc.DropdownMenu(
+                        children=[
+                            dbc.DropdownMenuItem([
+                                DashIconify(icon="mdi:poker", className="me-2"),
+                                "Poker"
+                            ], href="/games/poker"),
+                            dbc.DropdownMenuItem([
+                                DashIconify(icon="mdi:chess", className="me-2"),
+                                "Chess"
+                            ], href="/games/chess"),
+                        ],
+                        nav=True,
+                        label=[DashIconify(icon="mdi:gamepad", className="me-1"), "Play"],
+                        toggle_style={"color": "var(--text-primary)"}
+                    )
+                ),
 
-            # About Link
-            dbc.NavItem(
-                dbc.NavLink("About", href="/about", style={"color": "var(--primary-color)"})
-            ),
+                # Projects Dropdown
+                dbc.NavItem(
+                    dbc.DropdownMenu(
+                        children=[
+                            dbc.DropdownMenuItem([
+                                DashIconify(icon="mdi:run", className="me-2"),
+                                "StravaViz"
+                            ], href="/projects/strava"),
+                            dbc.DropdownMenuItem([
+                                DashIconify(icon="mdi:music", className="me-2"),
+                                "Music Analysis"
+                            ], href="/projects/spotify"),
+                        ],
+                        nav=True,
+                        label=[DashIconify(icon="mdi:code-braces", className="me-1"), "Projects"],
+                        toggle_style={"color": "var(--text-primary)"}
+                    )
+                ),
+
+                # Projects Dropdown
+                dbc.NavItem(
+                    dbc.DropdownMenu(
+                        children=[
+                            dbc.DropdownMenuItem([
+                                "Me"
+                            ], href="/about/me"),
+                            dbc.DropdownMenuItem([
+                                "This Project"
+                            ], href="/about/thisProject"),
+                        ],
+                        nav=True,
+                        label=[DashIconify(icon="mdi:account", className="me-1"), "About"],
+                        toggle_style={"color": "var(--text-primary)"}
+                    )
+                ),
+
+            ], className="ms-auto", navbar=True)
         ],
-        brand="ACM",
-        brand_href="/",
-        color="black",
+        className="navbar-modern",
+        color="transparent",
         dark=True,
-        className="navbar-custom",
-        style={
-            "border": "2px solid var(--primary-color)",
-            "background-color": "var(--panel-bg)",
-            "font-family": "'Share Tech Mono', monospace",
-        }
-    )
+        expand="lg"
+        )
+    ])

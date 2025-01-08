@@ -1,0 +1,85 @@
+body {
+    background-color: #0f172a;
+    color: white;
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.track-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+}
+.track-card {
+    background: #1e293b;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    position: relative;
+}
+.track-card:hover {
+    transform: translateY(-5px);
+}
+.track-info {
+    padding: 15px;
+}
+.track-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+.artist-name {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #94a3b8;
+}
+.rank-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+.time-range-selector {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 200px;
+}
+.Select-control {
+    background-color: #334155 !important;
+    border-color: #475569 !important;
+}
+.Select-value-label {
+    color: white !important;
+}
+.Select-menu-outer {
+    background-color: #334155 !important;
+    border-color: #475569 !important;
+    width: 200px;
+}
+.Select-option {
+    background-color: #334155 !important;
+    color: white !important;
+}
+.Select-option:hover {
+    background-color: #475569 !important;
+}
+.Select-placeholder {
+    color: #94a3b8 !important;
+}
