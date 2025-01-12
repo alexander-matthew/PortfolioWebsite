@@ -17,6 +17,7 @@ def create_navbar():
 
             # Right side - Navigation
             dbc.Nav([
+
                 # Games Dropdown
                 dbc.NavItem(
                     dbc.DropdownMenu(
@@ -55,7 +56,7 @@ def create_navbar():
                     )
                 ),
 
-                # Projects Dropdown
+                # About Dropdown
                 dbc.NavItem(
                     dbc.DropdownMenu(
                         children=[
