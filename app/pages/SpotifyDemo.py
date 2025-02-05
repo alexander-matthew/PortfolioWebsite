@@ -1,6 +1,6 @@
 from dash import html, dcc, callback, Input, Output, State
 from dash_iconify import DashIconify
-from app.tools.Spotify import SpotifyAPI
+from app.tools.SpotifyAPI import SpotifyAPI
 
 spotify_api = SpotifyAPI()
 

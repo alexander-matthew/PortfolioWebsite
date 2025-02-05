@@ -5,6 +5,7 @@ from .components.navbar import create_navbar
 from .components.footer import create_footer
 import dash_bootstrap_components as dbc
 from .pages.SpotifyDemo import create_spotify_page
+from .pages.stravaDash import create_strava_page
 from .components.sphere_renderer import create_sphere_component
 
 def create_app():
@@ -58,7 +59,7 @@ def init_app():
         elif base_path.startswith('/projects/spotify'):
             return create_spotify_page()
         elif base_path == '/projects/strava':
-            return html.Div("Strava")
+            return create_strava_page()
         elif base_path == '/games/poker':
             return html.Div("Poker Page")
         elif base_path == '/games/chess':

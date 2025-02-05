@@ -26,7 +26,7 @@ class SpotifyAPI:
         return f"https://accounts.spotify.com/authorize?{urlencode(auth_params)}"
 
     def get_token(self, code):
-        """Exchange authorization code for access token"""
+        """auth code -> access token"""
         token_url = 'https://accounts.spotify.com/api/token'
 
         auth_header = base64.b64encode(f"{self.client_id}:{self.client_secret}".encode()).decode()
