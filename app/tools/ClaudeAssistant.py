@@ -45,7 +45,7 @@ class SoftwareEngineer(Claude):
 
     def __init__(self):
         super().__init__()
-        self.root_dir = Path('C:/Users/Alex/PycharmProjects/PortfolioWebsite').resolve()
+        self.root_dir = Path('/Users/amatthew/PycharmProjects/PortfolioWebsite/app').resolve()
         self.target_extensions = {'.py', '.css'}
         self.ignore_dirs = {'.git', '.idea', '__pycache__', 'venv', '.venv', 'node_modules', '.env'}
 
@@ -62,7 +62,7 @@ class SoftwareEngineer(Claude):
                 2. Readability and brevity
                 3. Best practices and patterns
                 4. Performance implications
-                5. Style (make this shit look cool)
+                5. Style (make it look cool)
 
                 If possible, only re-write code where needed. Dont regurgitate code that already exists. 
                 Here is our codebase:
@@ -91,7 +91,6 @@ class SoftwareEngineer(Claude):
 
     def read_file_content(self, file_path: Path) -> Tuple[str, int]:
         """
-        Read content of a file and count its lines.
         Returns:
             Tuple of (content, line_count)
         """
@@ -146,7 +145,6 @@ class SoftwareEngineer(Claude):
         return formatted_text
 
     def save_formatted_codebase(self, output_file: str = "codebase_contents.txt"):
-        """Save the formatted contents to a file."""
         formatted_text = self.read_codebase()
         output_path = self.root_dir / output_file
 
@@ -154,6 +152,7 @@ class SoftwareEngineer(Claude):
             f.write(formatted_text)
 
         return output_path
+
 
 def main():
     # Initialize reader at current directory

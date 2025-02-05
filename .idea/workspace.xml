@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a24c6a49-01d4-4bfa-b02d-62ed4514cd1d" name="Changes" comment="more work on strava">
-      <change afterPath="$PROJECT_DIR$/app/assets/spotifyStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tools/githubAPI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/sphere_renderer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/PortfolioWebsite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PortfolioWebsite.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_30_24,_2_33 PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_30_24__2_33PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/pages/about.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/pages/about.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/navbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/navbar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tools/ClaudeAssistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tools/ClaudeAssistant.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +57,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.ClaudeAssistant.executor": "Run",
     "Python.SpotfiyDash.executor": "Run",
     "Python.app.executor": "Run",
     "Python.footer.executor": "Run",

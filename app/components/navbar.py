@@ -18,6 +18,21 @@ def create_navbar():
             # Right side - Navigation
             dbc.Nav([
 
+                # Art Dropdown
+                dbc.NavItem(
+                    dbc.DropdownMenu(
+                        children=[
+                            dbc.DropdownMenuItem([
+                                DashIconify(icon="mdi:panorama-sphere", className="me-2"),
+                                "Sphere"
+                            ], href="/visualArt/sphere")
+                        ],
+                        nav=True,
+                        label=[DashIconify(icon="mdi:image-360", className="me-1"), "Visual Art"],
+                        toggle_style={"color": "var(--text-primary)"}
+                    )
+                ),
+
                 # Games Dropdown
                 dbc.NavItem(
                     dbc.DropdownMenu(
