@@ -41,7 +41,7 @@ def create_login_button():
                     "Connect with Strava"
                 ],
                     className='modern-button'),
-                href='/strava-auth',
+                href='/projects/strava/auth',
                 className='no-underline'
             )
         ],
@@ -201,12 +201,12 @@ def create_strava_page():
                 ], className='dropdown-container')
             ], className='modern-card mb-6'),
 
-            html.Div(id='strava-auth-container', className='mb-6'),
+            html.Div(id='strava-auth-container', children=create_login_button(), className='mb-6'),
             html.Div(id='strava-profile-container', className='mb-6'),
             html.Div(id='strava-viz-container', className='modern-card'),
 
             # Hidden elements for auth
-            dcc.Store(id='strava-auth-store'),
+            dcc.Store(id='strava-auth-store', data=None),
             dcc.Location(id='strava-url', refresh=False)
         ], className='content-container')
     ], className='modern-page')
@@ -214,7 +214,7 @@ def create_strava_page():
 
 def register_strava_callbacks(app):
     # Strava auth endpoint
-    @app.server.route('/strava-auth')
+    @app.server.route('/projects/strava/auth')
     def strava_auth():
         auth_url = strava_api.get_authorization_url()
         return app.server.redirect(auth_url)
