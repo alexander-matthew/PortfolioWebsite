@@ -171,46 +171,94 @@ def create_activity_map(activity_data: Dict):
 
     return dcc.Graph(figure=fig, className='modern-graph')
 
-
-def create_strava_page():
+def create_header():
+    """Create the header section with title and time range selector."""
     return html.Div([
         html.Div([
-            # Header
-            html.Div([
-                html.Div([
+            DashIconify(
+                icon="mdi:run",
+                width=32,
+                className="section-icon"
+            ),
+            html.H2('Your Running Journey: Activity Analysis', className='section-title')
+        ], className='header-left'),
+
+        html.Div([
+            dcc.Dropdown(
+                id='strava-time-range',
+                options=[
+                    {'label': 'Last 4 Weeks', 'value': 'recent'},
+                    {'label': 'Year to Date', 'value': 'ytd'},
+                    {'label': 'All Time', 'value': 'all'}
+                ],
+                value='recent',
+                className='time-range-selector'
+            )
+        ], className='dropdown-container')
+    ], className='modern-card mb-6')
+
+
+def create_connect_button():
+    """Create the Strava connect button with explanatory text."""
+    return html.Div([
+        html.Div([
+            html.H2('Connect with Strava',
+                    className='section-title mb-4'),
+            html.P(
+                "Connect your Strava account to view your running statistics and activities.",
+                className="text-secondary mb-4"
+            ),
+            html.A(
+                html.Button([
                     DashIconify(
                         icon="mdi:run",
-                        width=32,
-                        className="section-icon"
+                        width=24,
+                        className="mr-2 inline-block"
                     ),
-                    html.H2('Your Running Journey: Activity Analysis', className='section-title')
-                ], className='header-left'),
+                    "Connect with Strava"
+                ],
+                    className='modern-button'),
+                href='/projects/strava/auth',
+                className='no-underline'
+            )
+        ],
+            className='modern-card text-center py-8')
+    ])
 
-                # Time Range Selector
-                html.Div([
-                    dcc.Dropdown(
-                        id='strava-time-range',
-                        options=[
-                            {'label': 'Last 4 Weeks', 'value': 'recent'},
-                            {'label': 'Year to Date', 'value': 'ytd'},
-                            {'label': 'All Time', 'value': 'all'}
-                        ],
-                        value='recent',
-                        className='time-range-selector'
-                    )
-                ], className='dropdown-container')
-            ], className='modern-card mb-6'),
+def create_plot_grid():
+    """Create the grid layout for visualization plots."""
+    return html.Div([
+        html.Div([
+            html.Div(id='strava-distance-plot', className='w-full lg:w-1/2 p-4'),
+            html.Div(id='strava-activity-map', className='w-full lg:w-1/2 p-4')
+        ], className='flex flex-wrap')
+    ], className='modern-card')
 
-            html.Div(id='strava-auth-container', children=create_login_button(), className='mb-6'),
+def create_strava_page():
+    """Main page component that composes all other components."""
+    return html.Div([
+        html.Div([
+            # Header Component
+            create_header(),
+
+            # Auth Container with Connect Button
+            html.Div(
+                id='strava-auth-container',
+                children=create_connect_button(),
+                className='mb-6'
+            ),
+
+            # Profile Container
             html.Div(id='strava-profile-container', className='mb-6'),
-            html.Div(id='strava-viz-container', className='modern-card'),
+
+            # Visualization Grid
+            create_plot_grid(),
 
             # Hidden elements for auth
             dcc.Store(id='strava-auth-store', data=None),
             dcc.Location(id='strava-url', refresh=False)
         ], className='content-container')
     ], className='modern-page')
-
 
 def register_strava_callbacks(app):
     # Strava auth endpoint

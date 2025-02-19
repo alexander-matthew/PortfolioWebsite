@@ -58,7 +58,7 @@ def init_app():
             return create_about_me_page()
         elif base_path.startswith('/projects/spotify'):
             return create_spotify_page()
-        elif base_path == '/projects/strava' or base_path == '/projects/strava/auth':
+        elif base_path.startswith('/projects/strava'):
             return create_strava_page()
         elif base_path == '/games/poker':
             return html.Div("Poker Page")
